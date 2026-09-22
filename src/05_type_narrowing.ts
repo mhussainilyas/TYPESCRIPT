@@ -13,3 +13,21 @@ function printID(id: number | string) {
 
 printID("hsn");
 printID(101);
+
+// ===========================
+//    "in" operator object
+// ===========================
+
+type User = { name: string; age: number };
+type Admin = { role: string };
+
+function getRole(userObj: User | Admin) {
+  if ("role" in userObj) {
+    return userObj.role;
+  } else {
+    return userObj.name;
+  }
+}
+
+console.log(getRole({ role: "guest" }));
+console.log(getRole({ name: "HSN", age: 21 }));
