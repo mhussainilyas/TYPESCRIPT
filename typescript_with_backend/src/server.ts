@@ -13,8 +13,12 @@ const app: Application = express();
 const PORT = process.env.PORT!;
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  }),
+);
 app.use("/api/v1", router);
-app.use(cors());
 
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);
